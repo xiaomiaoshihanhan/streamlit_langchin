@@ -3,11 +3,10 @@ import openai
 import streamlit as st
 
 # 侧边栏
-# with st.sidebar:
-#      openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+with st.sidebar:
+     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 
-# openai密钥
-openai_api_key = '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'
+
 
 # 页面的标题文字
 st.title("💬 Chatbot")
@@ -25,9 +24,9 @@ for msg in st.session_state.messages:
 if prompt := st.chat_input():
 
     # 如果没有密钥时，提示添加密钥
-    # if not openai_api_key:
-    #     st.info("Please add your OpenAI API key to continue.")
-    #     st.stop()
+    if not openai_api_key:
+        st.info("Please add your OpenAI API key to continue.")
+        st.stop()
 
     # 密钥
     openai.api_key = openai_api_key
